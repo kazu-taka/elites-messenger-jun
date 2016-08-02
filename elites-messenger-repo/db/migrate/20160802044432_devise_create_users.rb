@@ -5,6 +5,11 @@ class DeviseCreateUsers < ActiveRecord::Migration
       t.string :email,              null: false, default: ""
       t.string :encrypted_password, null: false, default: ""
 
+      ## nameとthumbnailとagreementを追加
+      t.string :name, null: false
+      t.string :thumbnail
+      t.boolean :agreement, null: false
+
       ## Recoverable
       t.string   :reset_password_token
       t.datetime :reset_password_sent_at
