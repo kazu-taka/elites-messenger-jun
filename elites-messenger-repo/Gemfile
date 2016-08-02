@@ -51,3 +51,5 @@ gem 'devise'
 gem 'carrierwave'
 # Bootstrap
 gem 'twitter-bootstrap-rails'
+# i18n
+gem 'i18n'
