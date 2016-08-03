@@ -2,7 +2,7 @@
 
   <!-- メッセージ入力 -->
   <div class="input">
-    <%= form_for @input_message do |f| %>
+    <%= form_for @input_message, remote: true, html: {class: 'input_message_form'}, format: :json, authenticity_token: true do |f| %>
         <div class="form-group">
           <%= f.label :message %>
           <% if @input_message.persisted? %>
@@ -23,7 +23,8 @@
                     <%= button_tag 'Cancel', class: 'btn btn-default' %>
                 <% end %>
             <% end %>
-            <%= f.submit 'Post', class: 'btn btn-primary' %>
+            <%= f.submit 'Post', class: 'btn btn-primary post' %>
+            <%= f.submit 'AjaxPost', class: 'btn btn-primary ajaxpost' %>
           </div>
         </div>
 
