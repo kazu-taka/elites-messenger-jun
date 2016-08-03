@@ -1,7 +1,7 @@
 class TimelinesController < ApplicationController
   def index
     # メッセージ入力
-    @input_message = Timeline.new
+    @input_message = params[:id] ? Timeline.find(params[:id]) : Timeline.new
     # タイムラインを取得
     @timeline = Timeline.includes(:user).order('updated_at DESC')
   end
@@ -10,6 +10,17 @@ class TimelinesController < ApplicationController
     timeline = Timeline.new
     timeline.attributes = input_message_param
     timeline.user_id = current_user.id
+    if timeline.valid? # バリデーションチェック
+      timeline.save!
+    else
+      flash[:alert] = timeline.errors.full_messages
+    end
+    redirect_to action: :index
+  end
+
+  def update
+    timeline = Timeline.find(params[:id])
+    timeline.attributes = input_message_param
     if timeline.valid? # バリデーションチェック
       timeline.save!
     else
