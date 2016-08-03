@@ -36,6 +36,7 @@ div.timeline_wrapper {
       p.icon {
         display: inline-block;
         width: 70px;
+        vertical-align: top;
         img {
           max-width: 100%;
           height: auto;
@@ -46,6 +47,17 @@ div.timeline_wrapper {
         margin-left: 10px;
         width: 500px;
         vertical-align: top;
+      }
+      div.operation {
+        display: inline-block;
+        button {
+          margin-bottom: 3px;
+        }
+        form.button_to {
+          input.btn {
+            width: 50px;
+          }
+        }
       }
     }
   }
