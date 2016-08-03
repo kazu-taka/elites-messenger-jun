@@ -6,7 +6,7 @@
         <div class="form-group">
           <%= f.label :message %>
           <% if @input_message.persisted? %>
-            編集中
+              編集中
           <% end %>
           <br/>
           <%= f.text_area :message, class: 'form-control', row: 3 %>
@@ -27,6 +27,18 @@
     <% end %>
   </div>
 
+  <div class="user_filter">
+    <%= form_tag filter_by_user_timelines_path do |f| %>
+        <div class="form-group">
+          <label>ユーザフィルター</label><br/>
+          <%= select_tag :filter_user_id, options_for_select(@users.map { |m| [m.name, m.id] }, params[:filter_user_id]), prompt: 'フィルターなし', class: 'form-control' %>
+        </div>
+        <div class="actions">
+          <%= submit_tag 'Apply', class: 'btn btn-primary' %>
+        </div>
+    <% end %>
+  </div>
+
   <!-- タイムライン -->
   <div class="timeline">
     <% @timeline.each do |t| %>
@@ -40,7 +52,7 @@
           </p>
           <%= simple_format t.message, class: 'message' %>
           <% if mypost?(t) %>
-              <%= link_to root_path(id: t.id, message: t.message) do %> 
+              <%= link_to root_path(id: t.id, message: t.message) do %>
                   <%= button_tag 'Edit', class: 'btn btn-info' %>
               <% end %>
           <% end %>

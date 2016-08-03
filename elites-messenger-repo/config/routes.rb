@@ -1,7 +1,11 @@
 Rails.application.routes.draw do
   root to: 'timelines#index'
 
-  resources :timelines
+  resources :timelines do
+    collection do
+      post 'filter_by_user'
+    end
+  end
 
   devise_for :users
   # The priority is based upon order of creation: first created -> highest priority.
