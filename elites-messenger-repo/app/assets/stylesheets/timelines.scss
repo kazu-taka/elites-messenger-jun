@@ -1,3 +1,12 @@
 div.logout_wrapper {
   text-align: right;
 }
+
+div.timeline_wrapper {
+  &.wrapper {
+    width: 700px;
+  }
+  div.actions {
+    div.post { float: right; }
+  }
+}
