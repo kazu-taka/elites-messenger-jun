@@ -21,7 +21,7 @@
   <!-- タイムライン -->
   <div class="timeline">
     <% @timeline.each do |t| %>
-        <div class="per">
+        <div class="per <%= 'mine' if t.user.id == current_user.id %>">
           <p class="icon">
             <% if t.user.thumbnail? %>
                 <%= image_tag t.user.thumbnail.url %>
