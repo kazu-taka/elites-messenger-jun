@@ -40,7 +40,7 @@
           </p>
           <%= simple_format t.message, class: 'message' %>
           <% if mypost?(t) %>
-              <%= link_to root_path(id: t.id, message: t.message) do %>
+              <%= link_to root_path(id: t.id, message: t.message) do %> 
                   <%= button_tag 'Edit', class: 'btn btn-info' %>
               <% end %>
           <% end %>
