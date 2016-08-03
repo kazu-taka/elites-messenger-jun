@@ -8,9 +8,30 @@
           <%= f.text_area :message, class: 'form-control', row: 3 %>
         </div>
         <div class="actions clearfix">
+          <div class="alert">
+            <p class="alert"><%= alert %></p>
+          </div>
           <div class="post">
             <%= f.submit 'Post', class: 'btn btn-primary' %>
           </div>
+        </div>
+    <% end %>
+  </div>
+
+  <!-- タイムライン -->
+  <div class="timeline">
+    <% @timeline.each do |t| %>
+        <div class="per">
+          <p class="icon">
+            <% if t.user.thumbnail? %>
+                <%= image_tag t.user.thumbnail.url %>
+            <% else %>
+                NO IMAGE
+            <% end %>
+          </p>
+          <p class="message">
+            <%= t.message %>
+          </p>
         </div>
     <% end %>
   </div>
