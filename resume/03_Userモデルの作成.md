@@ -2,7 +2,7 @@
 
 ### deviseのファイル設定と作成
 
-deviseコマンドで設定ファイルと画面を生成する。
+deviseのコマンドを使用し、設定ファイルと画面を生成する。
 ```
 $ rails g devise:install
 $ rails g devise:views
@@ -19,14 +19,15 @@ config.action_mailer.default_url_options = { host: 'localhost', port: 3000 }
 
 ### Userモデルの作成
 
-deviseのコマンドで作成。
+deviseのコマンドでUserを作成する。
 ```
 $ rails g devise User
 ```
 
 ### Userモデルにname, thumbnail, agreementを追加
 
-migrateファイルに追加。
+自動生成されたmigrateファイルにカラムを追加する。
+
 ```
 # db/migrate/(日付)_devise_create_users.rb
 
@@ -48,7 +49,8 @@ class DeviseCreateUsers < ActiveRecord::Migration
 end
 ```
 
-データベースに反映
+
+`rake db:migrate`コマンドでデータベースに反映する。
 ```
 $ rake db:migrate
 ```
@@ -56,7 +58,7 @@ $ rake db:migrate
 #### 「bundle exec」 の補足
 todo
 
-新規作成時に追加したパラメータを参照するように設定。
+ユーザ新規作成の入力項目にname、thumbnail、agreementを含むように`application_controller.rb`に設定。
 ```
 # app/controllers/application_controller.rb
 
@@ -77,10 +79,16 @@ end
 
 ```
 
-CarrierWaveのコマンドでサムネイル用にアップローダーを作成し、thumbnailとアップローダーを紐付ける。
+#### before_actionの補足
+todo
+
+
+CarrierWaveのコマンドでサムネイル用アップローダーを作成する。
 ```
 $  rails g uploader UserThumbnail
 ```
+
+thumbnailと作成したアップローダーを紐付ける。
 ```
 # app/models/user.rb
 
@@ -95,3 +103,6 @@ class User < ActiveRecord::Base
 end
 
 ```
+
+#### CarrierWaveの補足
+todo

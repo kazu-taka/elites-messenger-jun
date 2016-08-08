@@ -1,6 +1,6 @@
 ## メッセージのAjax投稿
 
-`create`アクションを編集し、JSONリクエストであれば結果をJSONで返却するように変更。
+`create`アクションを編集し、JSONリクエストであれば結果をJSONで返却するように変更する。
 
 ```
 # app/controllers/timeline_controller.rb
@@ -74,7 +74,7 @@ end
 ```
 
 
-Timeline画面を編集。
+タイムライン画面を編集する。
 - Ajax投稿用のボタンを追加
 - `form_for`に非同期通信のオプションを設定
 
@@ -137,6 +137,7 @@ Timeline画面を編集。
 </div>
 ```
 
+タイムライン用のJavaScript処理を作成する。
 - `create`アクションのレスポンス処理を追加
 - `form_for`のAjax投稿でない方の投稿ボタンは非同期通信にしない
 
