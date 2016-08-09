@@ -52,10 +52,9 @@ end
 
 `rake db:migrate`コマンドでデータベースに反映する。
 ```
-$ rake db:migrate
+$ bundle exec rake db:migrate
 ```
 
-#### 「bundle exec」 の補足
 todo
 
 ユーザ新規作成の入力項目にname、thumbnail、agreementを含むように`application_controller.rb`に設定。
@@ -79,16 +78,18 @@ end
 
 ```
 
-#### before_actionの補足
-todo
+#### 補足: コントローラのフィルタ機能
 
+- アクションの前後に処理を追加する場合は`before_action`、`after_action`フィルタを使用する。  
+- 主に認証の判定やログ出力などに利用される。
+- 設定したフィルタを無効化したい場合は`skip_before_action`、`skip_after_action`フィルタを使用する。
 
-CarrierWaveのコマンドでサムネイル用アップローダーを作成する。
+CarrierWaveのコマンドでサムネイル用アップローダー管理ファイルを作成する。
 ```
 $  rails g uploader UserThumbnail
 ```
 
-thumbnailと作成したアップローダーを紐付ける。
+thumbnailと作成した管理ファイルを紐付ける。
 ```
 # app/models/user.rb
 
@@ -104,5 +105,12 @@ end
 
 ```
 
-#### CarrierWaveの補足
-todo
+#### 補足: carrierwave
+
+- carrierwaveは画像アップロード機能を簡単にするためのGemライブラリ。  
+- `rails g uploader`コマンドでアップローダー管理ファイルが`app/uploaders`ディレクトリに作成される。
+- 動作の設定には管理ファイルを編集する。
+
+よく編集するメソッド
+- `store_dir` ・・・ 画像を保存するパス
+- `extension_white_list` ・・・ 保存を許可する画像の拡張子
