@@ -18,7 +18,7 @@ gem 'twitter-bootstrap-rails'
 $ bundle install
 ```
 
-#### 補足: Gemfile
+#### 補足: Gemfile11
 
 Gemfileは以下のフォーマットで記入する
 ```
@@ -59,4 +59,4 @@ $ bundle exec rake ...
 
 ```
 
-- `bundle exec`無しではプロジェクトのライブラリとのバージョン不一致により`You have already activated ...`エラーが発生する可能性があるため、全てのRailsコマンドには`bundle exec`をつけた方が無難。
+- `bundle exec`無しではプロジェクトのライブラリとのバージョン不一致により`You have already activated ...`エラーが発生する可能性があるため、プロジェクト内で使用するRailsコマンドには`bundle exec`をつけた方が無難。

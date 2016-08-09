@@ -2,10 +2,10 @@
 
 ### deviseのファイル設定と作成
 
-deviseのコマンドを使用し、設定ファイルと画面を生成する。
+deviseのコマンドを使用し、設定ファイルとビューを生成する。
 ```
-$ rails g devise:install
-$ rails g devise:views
+$ bundle exec rails g devise:install
+$ bundle exec rails g devise:views
 ```
 
 パスワードリマインダー用にメール設定を行う。
@@ -21,7 +21,7 @@ config.action_mailer.default_url_options = { host: 'localhost', port: 3000 }
 
 deviseのコマンドでUserを作成する。
 ```
-$ rails g devise User
+$ bundle exec rails g devise User
 ```
 
 ### Userモデルにname, thumbnail, agreementを追加
@@ -55,9 +55,8 @@ end
 $ bundle exec rake db:migrate
 ```
 
-todo
-
-ユーザ新規作成の入力項目にname、thumbnail、agreementを含むように`application_controller.rb`に設定。
+StrongParameters機能により、ユーザ新規作成の入力項目はデフォルトで認証に必要なキー(email)とパスワードとパスワード確認のみ許可されている。  
+StrongParametersにname、thumbnail、agreementを含むように`application_controller.rb`を編集する。
 ```
 # app/controllers/application_controller.rb
 
@@ -71,22 +70,18 @@ class ApplicationController < ActionController::Base
 
   private
   def configure_permitted_parameters
-    # 新規作成する場合にname、thumbnail、agreementパラメータを含める
+    # 新規作成にname、thumbnail、agreementパラメータを含める
     devise_parameter_sanitizer.permit(:sign_up, keys: [:name, :thumbnail, :agreement])
   end
 end
 
 ```
 
-#### 補足: コントローラのフィルタ機能
+### carrierwaveによるユーザサムネイル用アップローダー作成
 
-- アクションの前後に処理を追加する場合は`before_action`、`after_action`フィルタを使用する。  
-- 主に認証の判定やログ出力などに利用される。
-- 設定したフィルタを無効化したい場合は`skip_before_action`、`skip_after_action`フィルタを使用する。
-
-CarrierWaveのコマンドでサムネイル用アップローダー管理ファイルを作成する。
+carrierwaveの`g uploader`コマンドでサムネイル用アップローダー管理ファイルを作成する。
 ```
-$  rails g uploader UserThumbnail
+$ bundle exec rails g uploader UserThumbnail
 ```
 
 thumbnailと作成した管理ファイルを紐付ける。
@@ -104,6 +99,12 @@ class User < ActiveRecord::Base
 end
 
 ```
+
+#### 補足: コントローラのフィルタ機能
+
+- アクションの前後に処理を追加する場合は`before_action`、`after_action`フィルタを使用する。  
+- 主に認証の判定やログ出力などに利用される。
+- 設定したフィルタを無効化したい場合は`skip_before_action`、`skip_after_action`フィルタを使用する。
 
 #### 補足: carrierwave
 

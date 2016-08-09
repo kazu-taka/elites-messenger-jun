@@ -3,14 +3,14 @@
 `rails g model`コマンドでTimelineモデルを作成する。
 
 ```
-$ rails g model Timeline user_id:integer message:text
+$ bundle exec rails g model Timeline user_id:integer message:text
 
 ```
 
 `rake db:migrate`でデータベースに反映する。
 
 ```
-$ rake db:migrate
+$ bundle exec rake db:migrate
 ```
 
 usersテーブルとアソシエーションを設定する。
