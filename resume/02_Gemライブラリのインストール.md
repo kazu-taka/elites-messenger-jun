@@ -18,7 +18,7 @@ gem 'twitter-bootstrap-rails'
 $ bundle install
 ```
 
-#### 補足: Gemfile11
+### 補足: Gemfile
 
 Gemfileは以下のフォーマットで記入する
 ```
@@ -45,7 +45,7 @@ end
 
 ```
 
-#### 補足: bundle install と bundle exec
+### 補足: bundle install と bundle exec
 
 - `bundle install`したライブラリは「./vendor/bundle」のディレクトリに格納される。
 - `bundle install`のライブラリを使用してコマンドを実行する場合はコマンドに`bundle exec`というプレフィックスを付ける必要がある。

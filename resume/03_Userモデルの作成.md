@@ -100,13 +100,13 @@ end
 
 ```
 
-#### 補足: コントローラのフィルタ機能
+### 補足: コントローラのフィルタ機能
 
 - アクションの前後に処理を追加する場合は`before_action`、`after_action`フィルタを使用する。  
 - 主に認証の判定やログ出力などに利用される。
 - 設定したフィルタを無効化したい場合は`skip_before_action`、`skip_after_action`フィルタを使用する。
 
-#### 補足: carrierwave
+### 補足: carrierwave
 
 - carrierwaveは画像アップロード機能を簡単にするためのGemライブラリ。  
 - `rails g uploader`コマンドでアップローダー管理ファイルが`app/uploaders`ディレクトリに作成される。
