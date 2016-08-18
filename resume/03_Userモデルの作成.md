@@ -100,6 +100,20 @@ end
 
 ```
 
+### Carrierwaveの`uninitialized constant`エラー
+- 稀にRailsコマンド実行時`UserThumbnailUploader`が見つからずに`uninitialized constant`エラーが発生する場合がある
+- 頻繁に発生する場合は`config/application.rb`に`autoload_paths`のパス追加を記入する
+
+```
+# config/application.rb
+
+class Application < Rails::Application
+  # ↓を追加
+  config.autoload_paths += Dir[Rails.root.join('app', 'uploaders')]
+
+  **以下省略**
+```
+
 ### 補足: コントローラのフィルタ機能
 
 - アクションの前後に処理を追加する場合は`before_action`、`after_action`フィルタを使用する。  
