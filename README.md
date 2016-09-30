@@ -1,6 +1,6 @@
 ## メッセンジャーアプリ
 
-- elites-messenger-repo   
+- src 
 アプリソースコード
 - resume  
 レジュメ
