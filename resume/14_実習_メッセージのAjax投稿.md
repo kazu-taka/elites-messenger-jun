@@ -124,28 +124,22 @@ CSRFとはWebアプリケーションに存在する脆弱性、もしくはそ�
 
 Javascriptで書く場合
 ```JavaScript
-# app/javascripts/application.js
+# app/javascripts/timelines.js
 
-$(function() {
-  var initPostButtonEvent;
-  initPostButtonEvent = function() {
-    return $('form.input_message_form input.post').click((function(_this) {
-      return function(e) {
-        var form;
-        form = $('form.input_message_form');
-        form.removeAttr('data-remote');
-        form.removeData("remote");
-        return form.attr('action', form.attr('action').replace('.json', ''));
-      };
-    })(this));
-  };
-  initPostButtonEvent();
-  return $('form.input_message_form').on('ajax:complete', function(event, data, status) {
-    var json;
-    if (status === 'success') {
-      json = JSON.parse(data.responseText);
+$(function(){
+  $('form.input_message_form input.post').click(function(e){
+    // 「Post」ボタンは非Ajaxにする
+    var form = $('form.input_message_form');
+    form.removeAttr('data-remote');
+    form.removeData("remote");
+    form.attr('action', form.attr('action').replace('.json', ''));
+  });
+
+  $('form.input_message_form').on('ajax:complete', function(event, data, status){
+    // Ajaxレスポンス
+    if ( status == 'success') {
+      var json = JSON.parse(data.responseText);
       $('div.timeline').prepend($(json.timeline));
-      return initPostButtonEvent();
     }
   });
 });
