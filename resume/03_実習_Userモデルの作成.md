@@ -179,7 +179,7 @@ end
 
 `Dir[Rails.root.join('app', 'uploaders')]`がどのような動きをしているか確認したい場合は、`rails c`でコンソールを立ち上げます。
 ```bash
-~/workspace/elites-messenger/src (master) $ rails c
+~/workspace/elites-messenger20 (master) $ rails c
 ```
 
 プログラムを分解して実行する事も可能です。
