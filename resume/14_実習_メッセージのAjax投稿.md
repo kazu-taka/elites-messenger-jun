@@ -32,6 +32,9 @@ class TimelinesController < ApplicationController
 end
 ```
 
+:bulb:render_to_string<br>
+`render_to_string` メソッドは、テンプレート (erbファイル) のパース結果を strng として受け取るメソッドです。<br>
+この場合は、`app/views/timelines/timeline.html.erb` のレンダリング内容を `html` に string として代入します。
 
 タイムライン画面を編集します。
 - Ajax投稿用のボタンを追加
