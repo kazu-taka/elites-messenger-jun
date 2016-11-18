@@ -51,7 +51,7 @@ end
 CSRF(Cross-Site Request Forgeries)を防止する目的で設置されたRailsの機能です。<br>
 CSRFとはWebアプリケーションに存在する脆弱性、もしくはその脆弱性を利用した攻撃方法のことを指します。
 
-```html
+```diff
 # app/views/timelines/index.html.erb
 
 <div class="wrapper timeline_wrapper">
@@ -59,11 +59,8 @@ CSRFとはWebアプリケーションに存在する脆弱性、もしくはそ�
   <!-- メッセージ入力 -->
   <div class="input">
     
-<!--********************** 修正前 *********************-->
-    <%= form_for @input_message do |f| %>
-<!--********************** 修正後 *********************-->
-    <%= form_for @input_message, remote: true, html: {class: 'input_message_form'}, format: :json, authenticity_token: true do |f| %>
-<!--***************************************************-->
+-    <%= form_for @input_message do |f| %>
++    <%= form_for @input_message, remote: true, html: {class: 'input_message_form'}, format: :json, authenticity_token: true do |f| %>
 
       <div class="form-group">
         <%= f.label :message %>
@@ -85,10 +82,9 @@ CSRFとはWebアプリケーションに存在する脆弱性、もしくはそ�
               <%= button_tag 'Cancel', class: 'btn btn-default' %>
             <% end %>
           <% end %>
-          <%= f.submit 'Post', class: 'btn btn-primary post' %>
-<!--********************** 下記を追加 **********************-->
-          <%= f.submit 'AjaxPost', class: 'btn btn-primary ajaxpost' %>
-<!--********************************************************-->
+-          <%= f.submit 'Post', class: 'btn btn-primary' %>
++          <%= f.submit 'Post', class: 'btn btn-primary post' %>
++          <%= f.submit 'AjaxPost', class: 'btn btn-primary ajaxpost' %>
         </div>
       </div>
 
