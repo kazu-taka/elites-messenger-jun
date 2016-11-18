@@ -2,7 +2,7 @@
 
 `create`アクションを編集し、JSONリクエストであれば結果をJSONで返却するように変更します。
 
-```ruby
+```diff
 # app/controllers/timeline_controller.rb
 
 class TimelinesController < ApplicationController
@@ -18,17 +18,14 @@ class TimelinesController < ApplicationController
     else
       flash[:alert] = timeline.errors.full_messages
     end
-#--******************** 修正前 *********************
-    redirect_to action: :index
-#--******************** 修正後 *********************
-    unless request.format.json?
-      redirect_to action: :index
-    else
-      # ajaxの場合のレスポンス
-      html = render_to_string partial: 'timelines/timeline', layout: false, formats: :html, locals: { t: timeline }
-      render json: {timeline: html}
-    end
-#--************************************************
+-    redirect_to action: :index
++    unless request.format.json?
++      redirect_to action: :index
++    else
++      # ajaxの場合のレスポンス
++      html = render_to_string partial: 'timelines/timeline', layout: false, formats: :html, locals: { t: timeline }
++      render json: {timeline: html}
++    end
   end
 
 #--*********************** 省略 *******************
@@ -120,7 +117,7 @@ CSRFとはWebアプリケーションに存在する脆弱性、もしくはそ�
 
 Javascriptで書く場合
 ```JavaScript
-# app/javascripts/timelines.js
+# app/assets/javascripts/timelines.js
 
 $(function(){
   $('form.input_message_form input.post').click(function(e){
