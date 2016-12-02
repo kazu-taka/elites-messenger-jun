@@ -119,6 +119,7 @@ CSRFとはWebアプリケーションに存在する脆弱性、もしくはそ�
 ```
 
 タイムライン用のJavaScript処理を作成します。
+- `timelines.coffee`のファイル名を`timelines.js`に変更
 - `create`アクションのレスポンス処理を追加
 - `form_for`のAjax投稿でない方の投稿ボタンは非同期通信にしない
 
