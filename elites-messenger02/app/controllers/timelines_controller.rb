@@ -16,7 +16,7 @@ class TimelinesController < ApplicationController
     if timeline.valid? # バリデーションチェック
       timeline.save!
     else
-      flash[:alert] = timeline.errors.full_messages
+      flash[:alert] = "エラーになりました"
     end
     unless request.format.json?
       redirect_to action: :index

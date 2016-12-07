@@ -13,5 +13,8 @@ $(function(){
       var json = JSON.parse(data.responseText);
       $('div.timeline').prepend($(json.timeline));
     }
+    else {
+      alert("エラーになりました")
+    }
   });
 });
