@@ -27,6 +27,7 @@
     <%= link_to root_path(reply_id: t.id) do %>
       <%= button_tag 'Re', class: 'btn btn-info' %>
     <% end %>
+    <%= button_to 'Like', '/likes', params: { like_id: t.id.to_s }, method: :post, class: 'btn btn-danger' %>
   <% end %>
 </div>
 <% t.replies.each do |r| %>
