@@ -24,11 +24,22 @@
     </div>
   <% else %>
     <!-- 他人の投稿の場合、Reボタンを表示 -->
+    <div class="operation">
     <%= link_to root_path(reply_id: t.id) do %>
       <%= button_tag 'Re', class: 'btn btn-info' %>
     <% end %>
-    <%= button_to 'Like', '/likes', method: :post, class: 'btn btn-danger' %>
-  <% end %>
+      <%= button_to'Like', likes_path(like_id: t.id), method: :post, class: 'btn btn-danger' %>
+    </div>
+    <% end %>
+    
+    <hr>
+    <!--変数に代入された数値が「0」でない場合に「then」から「end」までの処理が実行-->
+    <% if t.likes.count != 0 then%>
+      <%= t.likes.count %> いいね！</br>
+      <!--配列の中からeachメソッドではなく、mapメソッドを使って呼び出し、それぞれをjoinで結合した-->
+      <%= t.likes.map(&:user).map(&:name).join("と") %>がいいねと言っています。
+    <% end %>
+
 </div>
 <% t.replies.each do |r| %>
   <%= render 'timelines/timeline', t: r, is_reply: true %>
