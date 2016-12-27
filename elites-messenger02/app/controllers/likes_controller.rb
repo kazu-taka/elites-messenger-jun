@@ -1,10 +1,11 @@
 class LikesController < ApplicationController
     def create
-        likes = Like.new
-        likes.attributes = like_param
-        likes.user_id = current_user.id
-        if likes.valid?
-            likes.save!
+        like = current_user.likes.build(like_param)
+        # like = Like.new
+        # likes.attributes = like_param
+        # likes.user_id = current_user.id
+        if like.valid?
+            like.save!
         else
             flash[:alert] = "エラーになりました"
         end
@@ -13,7 +14,7 @@ class LikesController < ApplicationController
     
     private
     def like_param
-        params.permit(:like_id)
+        params.permit(:timeline_id)
     end
     
 end

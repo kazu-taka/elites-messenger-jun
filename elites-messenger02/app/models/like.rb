@@ -1,6 +1,7 @@
 class Like < ActiveRecord::Base
     belongs_to :user
+    belongs_to :timeline
     
-    validates :like_id, uniqueness: { scope: [:user_id] }
+    validates :timeline_id, uniqueness: { scope: [:user_id] }
     
 end

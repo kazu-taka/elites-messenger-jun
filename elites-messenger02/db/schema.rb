@@ -15,9 +15,9 @@ ActiveRecord::Schema.define(version: 20161211043749) do
 
   create_table "likes", force: :cascade do |t|
     t.integer  "user_id"
-    t.integer  "like_id"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
+    t.integer  "timeline_id"
+    t.datetime "created_at",  null: false
+    t.datetime "updated_at",  null: false
   end
 
   create_table "timelines", force: :cascade do |t|
