@@ -1,6 +1,7 @@
 Rails.application.routes.draw do
   root 'timelines#index'
-
+  post '/likes/:like_id' => 'likes#create', :as => :likes
+  
   devise_for :users
   
   resources :timelines do
